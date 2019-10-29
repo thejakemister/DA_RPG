@@ -4,22 +4,14 @@
 # Date last modified: 23/10/01
 # Name: Jacob Leippi
 # Description: my text based adventure game
-
 """
 ===============================================================================
 -------------------------------------------------------------------------------
-Base needs:
+Imports
 
 inventory
-- canteen
-available weapons
-- spear
-- shotgun
-- swiss knife
-- availabe items
+weapon
 enemies
-- wolf
-- hallucinations
 -------------------------------------------------------------------------------
     mechanics
                         -day and night system:
@@ -43,42 +35,31 @@ Game starts
 
 you awake in a forest (paint detail picture)
 -------------------------------------------------------------------------------
- START():
-    you have three starting options:
--------------------------------------------------------------------------------
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-go to waterfall South
-    options:
-        - swim:
-
-        - collect water:
-
-        - go back(North):
-            - go back to START.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-go to campsite East
-        - fire place
-
-        - tent
-
-        - backpacks
-
-        - go back(West):
-            - go back to START.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-go into the trees North
-        - North
-
-        - East
-
-        - West
-
-        - go back(South):
-            - go back to START.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
--------------------------------------------------------------------------------
-END GAME:
-    you arrive at old oak tree behind it you can see a road. you have escaped
--------------------------------------------------------------------------------
-===============================================================================
 """
+a = "null"
+
+print('to start, TYPE start')
+
+while a != "quit":
+    a = str(input())
+
+
+
+    if a == "start":
+        print(
+        """
+        I     you awaken in a forest with no recollection of past events.     I
+        I                    you check your backpack                          I
+        I                                                                     I
+        I     inside there is a canteen that holds a small amount of water.   I
+        I                    right now it is empty.                           I
+        I        you look in each direction and see 3 Possible Paths.         I
+        I---------------------------------------------------------------------I
+        I                        waterfall (South)                            I
+        I---------------------------------------------------------------------I
+        i                         campsite (East)                             I
+        I---------------------------------------------------------------------I
+        I               venture deeper into the trees (North)                 I
+        I---------------------------------------------------------------------I
+        """
+        )

@@ -1,0 +1,4 @@
+enemies = {'Wolf';{'Claws':{
+                           }
+                  }
+}
