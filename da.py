@@ -32,6 +32,8 @@ import Weapons
 ===============================================================================
 -------------------------------------------------------------------------------
 """
+# game hasnt start yet so A is equal to false
+A = False
 
 userin = "null"
 print("""
@@ -51,7 +53,7 @@ o888ooooood8 8""88888P'   `Y8bood8P'  o88o     o8888o o888o        o888ooooood8
                     888       888ooooo888   888oooo8
                     888       888     888   888    "
                     888       888     888   888       o
-                    o888o     o888o   o888o o888ooooood8
+-                    o888o     o888o   o888o o888ooooood8
 
 oooooooooooo   .oooooo.   ooooooooo.   oooooooooooo  .oooooo..o ooooooooooooo
 `888'     `8  d8P'  `Y8b  `888   `Y88. `888'     `8 d8P'    `Y8 8'   888   `8
@@ -65,10 +67,11 @@ o888o         `Y8bood8P'  o888o  o888o o888ooooood8 8""88888P'      o888o
                                 -- QUIT  --
 """)
 
-A = False
+
 while userin != 'quit':
     userin = input().lower()
 
+# Tells the user the commands
     if userin == 'help':
         print("""
         - Type START to start the game.
@@ -81,6 +84,7 @@ while userin != 'quit':
         - To Check your Inventory, type 'backpack.'
         """)
 
+# first ui, introducing the backpack and paths
     if userin == 'start':
         A = True
         print("""
@@ -99,21 +103,21 @@ while userin != 'quit':
         I---------------------------------------------------------------------I
         """)
 
-
+# checks if the user has start the game and then shows the user their backpack
     if userin == 'backpack':
-        if A == True:
+        if A is True:
             for key, value in Inventory.Backpack.items():
                 print(f"\t{key}")
-
-    if A == True:
+# checks if the game is started or not, then allows the user to start the game
+    if A is True:
         if userin == 'south':
             SOUTH.Path()
         if userin == 'east':
             EAST.Path()
         if userin == 'north':
             NORTH.Path()
-
-    if A == False:
+# checks if game is started, if false. tells the user to start the game
+    if A is False:
         if userin != 'start':
             print('START THE GAME USING START')
         elif userin != 'help':
