@@ -10,6 +10,8 @@ import NORTH
 import Enemies
 import Inventory
 import Weapons
+
+
 """
 -------------------------------------------------------------------------------
     mechanics
@@ -25,6 +27,7 @@ import Weapons
                         -rng based pathway system
                         ex. if you go a certian pathway and go back, that
                         pathway may change
+
 -------------------------------------------------------------------------------
 ===============================================================================
 -------------------------------------------------------------------------------
@@ -62,25 +65,29 @@ o888o         `Y8bood8P'  o888o  o888o o888ooooood8 8""88888P'      o888o
                                 -- QUIT  --
 """)
 
-while userin != 'QUIT':
-    userin = str(input())
+A = False
+while userin != 'quit':
+    userin = input().lower()
 
-    if userin == 'HELP':
+    if userin == 'help':
         print("""
-            - Type 'quit' to quit the Game
+        - Type START to start the game.
 
-            - To choose a destination, pathway, or item;
-              type the word in the brackets
+        - Type 'QUIT' to quit the Game.
 
-            - To Check your Inventory, type 'inventory'
+        - To choose a destination, pathway, or item;
+          type the word in the brackets.
+
+        - To Check your Inventory, type 'backpack.'
         """)
 
-    if userin == 'START':
+    if userin == 'start':
+        A = True
         print("""
         I     you awaken in a forest with no recollection of past events.     I
-        I                    you check your backpack                          I
+        I                    you check your (backpack).                       I
         I                                                                     I
-        I     inside there is a canteen that holds a small amount of water.   I
+        I     inside there is a (canteen) that holds a small amount of water. I
         I                    right now it is empty.                           I
         I        you look in each direction and see 3 Possible Paths.         I
         I---------------------------------------------------------------------I
@@ -94,12 +101,20 @@ while userin != 'QUIT':
 
 
     if userin == 'backpack':
-        for key, value in Inventory.Backpack.items():
-            print(f"\t{key}")
+        if A == True:
+            for key, value in Inventory.Backpack.items():
+                print(f"\t{key}")
 
-    if userin == 'South':
-        SOUTH.Path()
-    if userin == 'East':
-        EAST.Path()
-    if userin == 'North':
-        North.Path()
+    if A == True:
+        if userin == 'south':
+            SOUTH.Path()
+        if userin == 'east':
+            EAST.Path()
+        if userin == 'north':
+            NORTH.Path()
+
+    if A == False:
+        if userin != 'start':
+            print('START THE GAME USING START')
+        elif userin != 'help':
+            print('START THE GAME USING START')
