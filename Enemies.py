@@ -1,6 +1,5 @@
 import random
-
-Enemies = {
+enemies = {
     'Wolf': {
         'name': 'Wolf',
         'health': '100',

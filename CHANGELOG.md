@@ -1,5 +1,5 @@
 Escape the Forest CHANGELOG
- unreleased
+unreleased
 added README file
 added main file da.py
 added to do list RPG.todo
@@ -7,4 +7,6 @@ v1.1
 added while loops and put the dictionaries into seperate files and imported to
 main file
 v1.2
-idk
+added the base path to SOUTH.py, EAST.py, and NORTH.py.
+refined menu
+changed UI

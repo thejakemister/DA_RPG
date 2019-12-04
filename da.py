@@ -4,120 +4,111 @@
 # Date last modified: 23/10/01
 # Name: Jacob Leippi
 # Description: my text based adventure game
-import SOUTH
-import EAST
-import NORTH
+# citation: Mapping code adapted from matt Obrigewitsch
+# github.com/mattObrigewitsch
 import Enemies
 import Inventory
 import Weapons
+import map
+import Menu
+import random
 
-
-"""
--------------------------------------------------------------------------------
-    mechanics
-                        -day and night system:
-                        ex. create a timer
-                        x = x + 1 idk
-                        -health system:
-                        ex. you encounter a wolf type defend to defend
-                        hp = health - (variable)
-                        -damage system:
-                        ex. you encounter a wolf type attack to attack
-                        enemy_hp = wolf_hp - (variable)
-                        -rng based pathway system
-                        ex. if you go a certian pathway and go back, that
-                        pathway may change
-
--------------------------------------------------------------------------------
-===============================================================================
--------------------------------------------------------------------------------
-"""
 # game hasnt start yet so A is equal to false
-A = False
+Game_started = False
+userin = "placeholder"
+Bag_open = False
 
-userin = "null"
-print("""
-                                 WELCOME TO
+Menu.menu()
 
-oooooooooooo  .oooooo..o   .oooooo.         .o.       ooooooooo.   oooooooooooo
-`888'     `8 d8P'    `Y8  d8P'  `Y8b       .888.      `888   `Y88. `888'     `8
- 888         Y88bo.      888              .8"888.      888   .d88'  888
- 888oooo8     `"Y8888o.  888             .8' `888.     888ooo88P'   888oooo8
- 888    "         `"Y88b 888            .88ooo8888.    888          888    "
- 888       o oo     .d8P `88b    ooo   .8'     `888.   888          888       o
-o888ooooood8 8""88888P'   `Y8bood8P'  o88o     o8888o o888o        o888ooooood8
-
-               ooooooooooooo ooooo   ooooo oooooooooooo
-               8'   888   `8 `888'   `888' `888'     `8
-                    888       888     888   888
-                    888       888ooooo888   888oooo8
-                    888       888     888   888    "
-                    888       888     888   888       o
--                    o888o     o888o   o888o o888ooooood8
-
-oooooooooooo   .oooooo.   ooooooooo.   oooooooooooo  .oooooo..o ooooooooooooo
-`888'     `8  d8P'  `Y8b  `888   `Y88. `888'     `8 d8P'    `Y8 8'   888   `8
- 888         888      888  888   .d88'  888         Y88bo.           888
- 888oooo8    888      888  888ooo88P'   888oooo8     `"Y8888o.       888
- 888    "    888      888  888`88b.     888    "         `"Y88b      888
- 888         `88b    d88'  888  `88b.   888       o oo     .d8P      888
-o888o         `Y8bood8P'  o888o  o888o o888ooooood8 8""88888P'      o888o
-                                -- START --
-                                -- HELP  --
-                                -- QUIT  --
-""")
-
-
-while userin != 'quit':
-    userin = input().lower()
-
-# Tells the user the commands
-    if userin == 'help':
-        print("""
-        - Type START to start the game.
-
-        - Type 'QUIT' to quit the Game.
-
-        - To choose a destination, pathway, or item;
-          type the word in the brackets.
-
-        - To Check your Inventory, type 'backpack.'
-        """)
-
-# first ui, introducing the backpack and paths
+while userin != "quit": #consistently run the following
+    userin = input().lower() #take user input in lower case
+    map.axisfinder() #find the X
+    map.activeyaxis = map.yaxislist[map.yaxis] #set the activeyaxis to the y axis with the X
+    # first ui, introducing the backpack and paths
     if userin == 'start':
-        A = True
+        Game_started = True
         print("""
-        I     you awaken in a forest with no recollection of past events.     I
-        I                    you check your (backpack).                       I
-        I                                                                     I
-        I     inside there is a (canteen) that holds a small amount of water. I
-        I                    right now it is empty.                           I
-        I        you look in each direction and see 3 Possible Paths.         I
-        I---------------------------------------------------------------------I
-        I                        waterfall (South)                            I
-        I---------------------------------------------------------------------I
-        i                         campsite (East)                             I
-        I---------------------------------------------------------------------I
-        I               venture deeper into the trees (North)                 I
-        I---------------------------------------------------------------------I
-        """)
+             you awaken in a forest with no recollection of past events.
+                            you check your (backpack).
 
-# checks if the user has start the game and then shows the user their backpack
-    if userin == 'backpack':
-        if A is True:
-            for key, value in Inventory.Backpack.items():
-                print(f"\t{key}")
-# checks if the game is started or not, then allows the user to start the game
-    if A is True:
-        if userin == 'south':
-            SOUTH.Path()
-        if userin == 'east':
-            EAST.Path()
-        if userin == 'north':
-            NORTH.Path()
-# checks if game is started, if false. tells the user to start the game
-    if A is False:
+             inside there is a (canteen) that holds a small amount of water.
+                            right now it is empty.
+             you seem to be in the "middle" of no where,
+             to your (north) there is a forest
+             to your (east) there is a large campsite
+             to your (south) there is a great range of mountains
+             to your (west) there is a barren plains
+        """)
+    if userin == "backpack":
+        Inventory.invent(Game_started)
+        if Bag_open == True:
+            if userin in BackpackL:
+                    value = Inventory.Backpack[key]
+                    print(f"\t{userin} - {value}")
+            elif userin == 'close backpack':
+                print("you have closed your backpack")
+                Bag_open = False
+            elif Bag_open == False:
+                if userin in BackpackL:
+                    print("""
+                    - you need to open your backpack to look at your items -
+                    """)
+    elif Game_started == True:
+        if userin == "test": #test code, n/a
+            print("test vacant")
+        elif userin == "axistest": #used for testing again, n/a
+            map.axisfinder()
+            print("yaxis: " + str(map.yaxis))
+            print("xaxis: " + str(map.xaxis))
+        elif userin == "west": #if user types a
+            if map.xaxis != 0: #if the X isnt on the edge
+                map.oldev = map.ev #change old event
+                map.ev = map.activeyaxis.pop(map.xaxis - 1) #change new event
+                map.eventfinder(map.ev) #run eventfinder with new event
+        elif userin == "east": #if user types d
+            if map.xaxis != len(map.activeyaxis)-1: #if the X isnt on the edge
+                map.oldev = map.ev #change old event
+                map.ev = map.activeyaxis.pop(map.xaxis + 1) #change new event
+                map.eventfinder(map.ev) #run eventfinder with new event
+        elif userin == "north": #if user types w
+            if map.activeyaxis != map.yaxis0: #if the X isnt on the edge
+                try: #try to run the following
+                    map.tempyaxis = map.yaxislist[map.yaxis - 1] #create a temporary new y axis
+                    map.oldev = map.ev #change old event
+                    map.ev = map.tempyaxis.pop(map.xaxis) #change new event
+                    map.eventfinder(map.ev) #run eventfinder with new event
+                except: #run if the try failed:
+                    #the only reason the try should fail is because there is nothing
+                    #in the direction
+                    print("There is nothing in that direction")
+        elif userin == "south": #if user types s
+            if map.activeyaxis != map.yaxislist[map.minyaxis]: #if the X isnt on the edge
+                try: #try to run the following
+                    map.tempyaxis = map.yaxislist[map.yaxis + 1] #create a temporary new y axis
+                    map.oldev = map.ev #change old event
+                    map.ev = map.tempyaxis.pop(map.xaxis) #change new event
+                    map.eventfinder(map.ev) #run eventfinder with new event
+                except: #run if the try failed:
+                    #the only reason the try should fail is because there is nothing
+                    #in the direction
+                    print("There is nothing in that direction")
+        elif userin == "quit":
+            print("ending program, thanks for playing!")
+            break
+        elif userin == 'help':
+            print("""
+            - Type START to start the game.
+
+            - Type 'QUIT' to quit the Game.
+
+            - To choose a destination, pathway, or item;
+              type the word in the brackets.
+
+            - To Check your Inventory, type 'backpack.'
+            """)
+
+    # check if game is started, if false. tells the user to start the game
+    elif Game_started is False:
         if userin != 'start':
             print('START THE GAME USING START')
         elif userin != 'help':
