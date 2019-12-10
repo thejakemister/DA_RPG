@@ -29,30 +29,16 @@ while userin != "quit": #consistently run the following
         Game_started = True
         print("""
              you awaken in a forest with no recollection of past events.
-                            you check your (backpack).
-
-             inside there is a (canteen) that holds a small amount of water.
-                            right now it is empty.
-             you seem to be in the "middle" of no where,
+                      the only thing you have is Backpack
+                            with few items in it
+            ----- you seem to be in the "middle" of no where -------
              to your (north) there is a forest
-             to your (east) there is a large campsite
+             to your (east)  there is a large campsite
              to your (south) there is a great range of mountains
-             to your (west) there is a barren plains
+             to your (west)  there is a barren plains
         """)
     if userin == "backpack":
         Inventory.invent(Game_started)
-        if Bag_open == True:
-            if userin in BackpackL:
-                    value = Inventory.Backpack[key]
-                    print(f"\t{userin} - {value}")
-            elif userin == 'close backpack':
-                print("you have closed your backpack")
-                Bag_open = False
-            elif Bag_open == False:
-                if userin in BackpackL:
-                    print("""
-                    - you need to open your backpack to look at your items -
-                    """)
     elif Game_started == True:
         if userin == "test": #test code, n/a
             print("test vacant")
