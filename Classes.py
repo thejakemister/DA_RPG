@@ -1,38 +1,42 @@
 import random
+import re
 
-backpack = []
 
 # This File defines the many classes insides of my game
 class Healing:
     # possible atainable healing items in game
 
-    def __init__(self, amount, hpregen, Description):
+    def __init__(self, name = None, amount = None, hpregen = None, Description = None):
         # initialize name
+        self.name = name
         self.amount = amount
         self.hpregen = hpregen
         self.Description = Description
+        self.full = name, amount, hpregen, Description
 
     def inspect(self):
         print(self.amount)
-        print(f'{self.hpregen} is how much this will heal you')
+        print(f"{self.hpregen} is how much this will heal you")
 
 class Weapons:
     # possible attatinable weapons in game
 
-    def __init__(self, Ammo, Damage, Description):
+    def __init__(self, name, Ammo, Damage, Description):
         # initialize name
+        self.name = name
         self.Ammo = Ammo
         self.Damage = Damage
         self.Description = Description
 
     def inspect(self):
-        print(f'{self.Ammo} shots left')
-        print(f'{self.Damage} wow you did this much damage')
+        print(f"{self.Ammo} shots left")
+        print(f"{self.Damage} wow you did this much damage")
 
 class Enemies:
     # all Enemies
 
-    def __init__(self, EnHp, Damage, Description):
+    def __init__(self, name, EnHp, Damage, Description):
+        self.name = name
         self.EnHp = EnHp
         self.Damage = Damage
         self.Description = Description
@@ -41,29 +45,34 @@ class Enemies:
         print(self.EnHp)
 
 # Healing Items
-Canteen = Healing('full', 10, 'A canteen full of water')
-Medkit = Healing('full', 50, 'A medkit with various items to heal large wounds')
 
-# Weapons
-Shotgun = Weapons( 8, random.uniform(75,100), '12 Gauge Double Barrelled Shotgun')
+Medkit = Healing("Medkit", "full", 50, "A medkit with various items to heal large wounds")
+Canteen = Healing("Canteen", "Empty", 0, "A canteen that can hold liquid")
 
-Baseball_Bat =  Weapons("Ammo", "Damage", "Description")
-Flare_Gun = Weapons( "Ammo", "Damage", "Description")
-Utility_knife = Weapons( "Ammo", "Damage", "Description")
+Weapons
+Shotgun = Weapons("Shotgun", 8, random.uniform(75,100), "12 Gauge Double Barrelled Shotgun")
+
+Baseball_Bat =  Weapons("Baseball Bat","Ammo", "Damage", "Description")
+Flare_Gun = Weapons("Flare Gun", "Ammo", "Damage", "Description")
+Utility_knife = Weapons("Utility knife", "Ammo", "Damage", "Description")
 
 # Enemies
+Wolf = Enemies("Wolf", "Hp", "Damage", "Description")
+Shadow = Enemies("Shadow", "Hp", "Damage", "Description")
+Hallucination = Enemies("Hallucination", "Hp", "Damage", "Description")
+Bear = Enemies("Bear", "Hp", "Damage", "Description")
+Tree = Enemies("Tree", "Hp", "Damage", "Description")
+Boss = Enemies("Boss", "Hp", "Damage", "Description")
 
-Wolf = Enemies("Hp", "Damage", "Description")
-Shadow = Enemies("Hp", "Damage", "Description")
-Hallucination = Enemies("Hp", "Damage", "Description")
-Bear = Enemies("Hp", "Damage", "Description")
-Tree = Enemies("Hp", "Damage", "Description")
-Boss = Enemies("Hp", "Damage", "Description")
 
 # Test code
-userin = 'null'
 
-while userin != 'quit':
-    userin = input().lower()
-    a = isinstance(userin, Healing)
-    print (a)
+userin = "null"
+
+# while userin != "quit":
+    #userin = input().lower()
+    #if userin == "medkit":
+backpack = []
+backpack.append(Medkit.full)
+backpack.append(Canteen.full)
+print(*backpack, sep = "\n")
