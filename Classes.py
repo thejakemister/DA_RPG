@@ -1,6 +1,12 @@
+# Course: CS 30
+# Period: 4
+# Date created: 23/10/01
+# Date last modified: 23/10/01
+# Name: Jacob Leippi
+# Description: my text based adventure game
+
 import random
 import re
-
 
 # This File defines the many classes insides of my game
 class Healing:
@@ -43,19 +49,20 @@ class Enemies:
 
     def inspect(self):
         print(self.EnHp)
-
+# ------------------------------------------------------------------------------
 # Healing Items
 
-Medkit = Healing("Medkit", "full", 50, "A medkit with various items to heal large wounds")
+Medkit = Healing("Medkit", "full", 50,
+"A medkit with various items to heal large wounds")
 Canteen = Healing("Canteen", "Empty", 0, "A canteen that can hold liquid")
-
-Weapons
-Shotgun = Weapons("Shotgun", 8, random.uniform(75,100), "12 Gauge Double Barrelled Shotgun")
-
+# ------------------------------------------------------------------------------
+# Weapons
+Shotgun = Weapons("Shotgun", 8, random.uniform(75,100),
+"12 Gauge Double Barrelled Shotgun")
 Baseball_Bat =  Weapons("Baseball Bat","Ammo", "Damage", "Description")
 Flare_Gun = Weapons("Flare Gun", "Ammo", "Damage", "Description")
 Utility_knife = Weapons("Utility knife", "Ammo", "Damage", "Description")
-
+# ------------------------------------------------------------------------------
 # Enemies
 Wolf = Enemies("Wolf", "Hp", "Damage", "Description")
 Shadow = Enemies("Shadow", "Hp", "Damage", "Description")
@@ -63,16 +70,4 @@ Hallucination = Enemies("Hallucination", "Hp", "Damage", "Description")
 Bear = Enemies("Bear", "Hp", "Damage", "Description")
 Tree = Enemies("Tree", "Hp", "Damage", "Description")
 Boss = Enemies("Boss", "Hp", "Damage", "Description")
-
-
-# Test code
-
-userin = "null"
-
-# while userin != "quit":
-    #userin = input().lower()
-    #if userin == "medkit":
-backpack = []
-backpack.append(Medkit.full)
-backpack.append(Canteen.full)
-print(*backpack, sep = "\n")
+# ------------------------------------------------------------------------------

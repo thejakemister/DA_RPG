@@ -1,7 +1,8 @@
-# Escape the Forest
+# Escape
 
-escape the forest is text based advenute game that leads the player through
-a Forest
+Escape is text based adventure game that leads the player through
+a 4 different biomes with bosses for each biome, once each boss is defeated the
+player must find their back to where it all began to find the exit
 
 ## Installation
 
@@ -10,7 +11,7 @@ Python 3.7 is needed to play this game. [Python 3.7](https://www.python.org/down
 
 ## Run the Program
 
-```python
+```
 python da.py
 ```
 

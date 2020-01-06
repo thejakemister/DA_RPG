@@ -1,3 +1,9 @@
+# Course: CS 30
+# Period: 4
+# Date created: 23/10/01
+# Date last modified: 23/10/01
+# Name: Jacob Leippi
+# Description: my text based adventure game
 
 import random
 
@@ -6,9 +12,9 @@ yaxis1 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis2 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis3 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis4 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
-yaxis5 = [' . ',' . ',' . ',' E ',' X ',' . ',' . ',' . ',' . ']
-yaxis6 = [' . ',' . ',' . ',' . ',' M ',' . ',' . ',' . ',' . ']
-yaxis7 = [' . ',' . ',' . ',' . ',' W ',' . ',' . ',' . ',' . ']
+yaxis5 = [' . ',' . ',' . ',' . ',' X ',' . ',' . ',' . ',' . ']
+yaxis6 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
+yaxis7 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis8 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis9 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis10 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
@@ -61,13 +67,7 @@ def eventfinder(eventcode):
             del activeyaxis[xaxis] #delete old X
         activeyaxis.insert(xaxis, oldev) #insert the missing map part
         print("there is nothing here (yet)")
-    if eventcode == ' o ':
-        if "north" in userin or "south" in userin:#only runs next lines if met
-            tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
-            del activeyaxis[xaxis]#delete old X
-        activeyaxis.insert(xaxis, oldev)#insert the missing map part
-        print("you walked over the amazing test rock! congratulations!")
-    if eventcode == ' W ':
+    if eventcode == ' N ':
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
@@ -79,7 +79,7 @@ def eventfinder(eventcode):
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
         print("damn, you in the middle of no-where")
-    if eventcode == ' M ':
+    if eventcode == ' S ':
         RNG = random.uniform(0, 1)
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
@@ -90,21 +90,21 @@ def eventfinder(eventcode):
         if RNG > 0.5:
             print("Jacob Gilbertson found you")
             print("Game over")
-    if eventcode == ' P ':
+    if eventcode == ' W ':
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
         print("Youre in Jacob Gilbertsons house")
-    if eventcode == ' F ':
+    if eventcode == ' B ':
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
         print("Youre in Matt Obrigewitsch's Basement")
-    if eventcode == ' C ':
+    if eventcode == ' Exit ':
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
-        print("Youre dead")
+        print("youve excaped")
