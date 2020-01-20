@@ -10,7 +10,7 @@ import Classes
 import Map
 import Menu
 import random
-import Backpack
+
 
 # game hasnt start yet so A is equal to false
 Game_started = False
@@ -18,6 +18,7 @@ userin = "placeholder"
 Bag_open = False
 
 Menu.menu()
+
 
 while userin != "quit": #consistently run the following
     userin = input().lower() #take user input in lower case
@@ -37,14 +38,15 @@ while userin != "quit": #consistently run the following
             -  to your (east)  there is a large campsite
 
             -  to your (south) there is a great range of mountains
-            
+
             -  to your (west)  there is a barren plains
 
         """)
 
     if Game_started == True:
         if userin == "backpack":
-            Backpack.backpack(Bag_open)
+            Bag_open = True
+            Classes.backpack(Bag_open, userin)
         elif Game_started == True:
             if userin == "test": #test code, n/a
                 print("test vacant")
@@ -61,8 +63,8 @@ while userin != "quit": #consistently run the following
                 if Map.xaxis != len(Map.activeyaxis)-1: #if the X isnt on the edge
                     Map.oldev = Map.ev #change old event
                     Map.ev = Map.activeyaxis.pop(Map.xaxis + 1) #change new event
-                    Map.eventfinder(Map.ev) #run eventfinder with new event
                     print("You went east")
+                    Map.eventfinder(Map.ev) #run eventfinder with new event
             elif userin == "north": #if user types North
                 if Map.activeyaxis != Map.yaxis0: #if the X isnt on the edge
                     try: #try to run the following
@@ -73,7 +75,7 @@ while userin != "quit": #consistently run the following
                     except: #run if the try failed:
                         #the only reason the try should fail is because there is nothing
                         #in the direction
-                        print("There is nothing in that direction")
+                        print('nothing')
             elif userin == "south": #if user types south
                 if Map.activeyaxis != Map.yaxislist[Map.minyaxis]: #if the X isnt on the edge
                     try: #try to run the following

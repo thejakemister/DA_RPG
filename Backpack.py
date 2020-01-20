@@ -8,15 +8,13 @@
 
 import Classes
 
-backpack = ['  ']
 
+pack = ['']
+
+
+pack.append(Medkit.full)
 # backpack.append(Classes.Medkit)
 
-def backpack(Bag_open):
+def backpack(Bag_open, pack):
     bag_open = True
-    print(backpack.self.full)
-
-"""
-def PickUp():
-    print(yuh)
-"""
+    print(pack)

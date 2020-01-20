@@ -6,13 +6,13 @@
 # Description: my text based adventure game
 
 import random
-
+import Classes
 yaxis0 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis1 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis2 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis3 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
-yaxis4 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
-yaxis5 = [' . ',' . ',' . ',' . ',' X ',' . ',' . ',' . ',' . ']
+yaxis4 = [' . ',' . ',' . ',' . ',' Y ',' . ',' . ',' . ',' . ']
+yaxis5 = [' . ',' . ',' . ',' . ',' X ',' B ',' . ',' . ',' . ']
 yaxis6 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis7 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
 yaxis8 = [' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ',' . ']
@@ -72,7 +72,7 @@ def eventfinder(eventcode):
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
-        print("youre at a waterfall")
+        print("you're at a waterfall")
     if eventcode == ' E ':
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
@@ -101,10 +101,22 @@ def eventfinder(eventcode):
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
-        print("Youre in Matt Obrigewitsch's Basement")
-    if eventcode == ' Exit ':
+        print("""Youre in Matt Obrigewitsch's Basement
+        youve found a little well in matts basement would you like to fill your canteen?
+        """)
+        itempickup = 6
+        Classes.prompt(userin, itempickup)
+    if eventcode == ' Y ':
         if "north" in userin or "south" in userin:#only runs next lines if met
             tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
             del activeyaxis[xaxis]#delete old X
+        activeyaxis.insert(xaxis, oldev)#insert the missing map part
+        print('you found a medkit would you like to pick it up')
+        itempickup = 1
+        Classes.prompt(userin, itempickup)
+    if eventcode == ' Exit ':
+        if "north" in userin or "south" in userin:#only runs next lines if met
+            tempyaxis.insert(xaxis, ' X ')#if going up or down insert a new X
+            del activeyaxis[xaxiBackpack.appends]#delete old X
         activeyaxis.insert(xaxis, oldev)#insert the missing map part
         print("youve excaped")
